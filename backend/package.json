@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Oil Price Prediction",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/yiyunlei/DATA602-Oil-Prediction.git"
+  },
+  "keywords": [
+    "Oil"
+  ],
+  "author": "Yiyun Lei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yiyunlei/DATA602-Oil-Prediction/issues"
+  },
+  "homepage": "https://github.com/yiyunlei/DATA602-Oil-Prediction#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
