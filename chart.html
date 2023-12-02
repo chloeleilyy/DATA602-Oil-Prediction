@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oil Price Chart</title>
+  <script src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+</head>
+<body>
+<div id="chart" style="width: 800px; height: 400px;"></div>
+
+<script>
+  var chart = echarts.init(document.getElementById('chart'));
+
+  var data = [
+    ['2022-01-01', 50],
+    ['2022-02-01', 55],
+    ['2022-03-01', 45],
+    ['2022-04-01', 64],
+    ['2022-05-01', 62],
+    ['2022-06-01', 60],
+    ['2022-07-01', 63],
+    ['2022-08-01', 60],
+    ['2022-09-01', 64],
+    ['2022-10-01', 63],
+    ['2023-01-01', 50],
+    ['2023-02-01', 60],
+    ['2023-03-01', 29],
+    ['2023-04-01', 60],
+    ['2023-05-01', 60],
+    ['2023-06-01', 70],
+    ['2023-07-01', 30],
+    ['2023-08-01', 60],
+    ['2023-09-01', 50],
+    ['2023-10-01', 60],
+
+  ];
+
+  // 将时间字符串转换为 JavaScript Date 对象
+  data = data.map(function (item) {
+    var dateString = item[0];
+    var date = new Date(dateString.replace(/-/g, '/')); // 兼容不同浏览器的日期格式
+    return [date, item[1]];
+  });
+
+  // 配置图表选项
+  var option = {
+    tooltip: {
+      trigger: 'axis',
+      formatter: function (params) {
+        params = params[0];
+        var date = new Date(params.name);
+        return '<br>Date: ' + params.value[0] +
+                '<br>Price: ' + params.value[1];
+      },
+      axisPointer: {
+        animation: false
+      }
+    },
+    xAxis: {
+      type: 'time',
+      splitLine: {
+        show: false
+      }
+    },
+    yAxis: {
+      type: 'value',
+      boundaryGap: [0, '100%'],
+      splitLine: {
+        show: false
+      }
+    },
+    dataZoom: [{
+      type: 'inside',
+      start: 0,
+      end: 100
+    }, {
+      start: 0,
+      end: 100,
+      handleIcon: 'M10 0 L5 10 L0 0 L5 0 L5 10 Z',
+      handleSize: '80%',
+      handleStyle: {
+        color: '#fff',
+        shadowBlur: 3,
+        shadowColor: 'rgba(0, 0, 0, 0.6)',
+        shadowOffsetX: 2,
+        shadowOffsetY: 2
+      }
+    }],
+    series: [{
+      type: 'line',
+      showSymbol: false,
+      hoverAnimation: false,
+      data: data
+    }]
+  };
+
+  chart.setOption(option);
+</script>
+</body>
+</html>
