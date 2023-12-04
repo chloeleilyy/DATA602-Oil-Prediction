@@ -3,11 +3,15 @@ import json
 
 from flask import Flask
 from flask import request
+from flask import jsonify
+from flask_cors import CORS
 
 
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
+    CORS(app)
+
     app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
@@ -61,15 +65,22 @@ def create_app(test_config=None):
 
     # routes
     # return all oil prices.
-    @app.route("/all_oil_price", methods=['GET'])
+    @app.route("/all_oil_price", methods=['GET', 'POST', 'PUT', 'DELETE'])
     def all_oil_price():
+        # if request.method == 'GET':
+        #     query = "SELECT * FROM oil_price"
+        #     result = query_db(query)
+        #     if result is None:
+        #         return "No data in database."
+        #     response = json.dumps(result)
+        #     response.headers.add('Access-Control-Allow-Origin', '*')
+        #     return response
         if request.method == 'GET':
             query = "SELECT * FROM oil_price"
             result = query_db(query)
             if result is None:
-                return "No data in database."
-            result_json_output = json.dumps(result)
-            return result_json_output
+                return jsonify({"message": "No data in database."}), 404
+            return jsonify(result)
 
 
     # oil price of the specific date.
@@ -90,7 +101,7 @@ def create_app(test_config=None):
             if request.is_json:
                 content = request.get_json()
                 new_data = (content['date'], content['oil_price'])
-                query = "INSERT INTO oil_price VALUES (%s, %s)"
+                query = "INSERT INTO oil_price VALUES (%s, %s)".format(content['date'], content['oil_price'])
                 query_db(query, new_data)
                 return "Insert successfully."
             else:
