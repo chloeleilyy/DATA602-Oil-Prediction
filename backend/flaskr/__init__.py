@@ -8,7 +8,7 @@ from flask_cors import CORS
 
 
 def create_app(test_config=None):
-    # create and configure the app
+    # flask --app flaskr run --debug
     app = Flask(__name__, instance_relative_config=True)
     CORS(app)
 
@@ -30,7 +30,7 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    from . import db
+    import db
     db.init_app(app)
 
     # def query_db(query, args=(), one=False):
