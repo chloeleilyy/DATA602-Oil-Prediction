@@ -89,7 +89,8 @@ def create_app(test_config=None):
             return jsonify(result)
 
     def get_oil_price_from_eia():
-        API_KEY = 'qwB5M8S2CmPSzvDeYN79s1vmSehRPMebQC08JBEd'
+        # enter API_key here.
+        API_KEY = ''
         url = f'https://api.eia.gov/v2/petroleum/pri/spt/data/?api_key={API_KEY}&frequency=daily&data[0]=value&facets[series][]=RWTC&start=1986-01-03&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000'
         response = requests.get(url)
         data = response.json()
