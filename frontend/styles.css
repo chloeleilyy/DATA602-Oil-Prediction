@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+#container {
+    width: 80%;
+    height: 70vh;
+    margin: 0 auto;
+}
+
+#bottom-info {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* 在styles.css中添加以下CSS样式 */
+
+#update-button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding:5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#update-button:hover {
+    background-color: #0056b3;
+}

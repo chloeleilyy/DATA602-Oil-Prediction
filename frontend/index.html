@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oil Price Chart</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+</head>
+<body>
+    <h1 style="text-align: center;">Oil Price Prediction</h1>
+    <p style="text-align: center;">This chart illustrates the oil prices over time. Hover over the line to view specific dates and prices. Use the scrollbar at the bottom to select a time range.</p>
+    <p style="text-align: center;">Click the update button at the bottom to get the newest prediction data. The data updates once a week as our data source is from the EIA.</p>
+    <div id="container"></div>
+    
+    <div id="bottom-info">
+        <span id="current-date"></span>
+        <button id="update-button">Update</button>
+        <p>Creator: Yiyun Lei & Xueyan Geng</p>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
