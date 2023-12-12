@@ -97,7 +97,7 @@
           ];
          */
 
-        fetch('http://flask.eba-nurfnhwm.us-east-2.elasticbeanstalk.com/all_oil_price')
+        fetch(' http://127.0.0.1:5000/all_oil_price')
             .then(response => response.json())
             .then(data => {
                 var originalData = [];
@@ -109,36 +109,6 @@
                     originalData.push([date, item.oil_price]);
                     predictionData.push([date, item.prediction === 1 ? item.oil_price : null]);
                 });
-
-                // 将时间字符串转换为 JavaScript Date 对象
-                // function parseData(data) {
-                //     return data.map(function (item) {
-                //         var dateString = item[0];
-                //         console.log(dateString);
-                //         // Check if dateString is defined and a string before proceeding
-                //         if (dateString && typeof dateString === 'string') {
-                //             // Split the date string into its components
-                //             var dateComponents = dateString.split('-');
-
-                //             // Create a new Date object using the components
-                //             var date = new Date(
-                //                 parseInt(dateComponents[0]),  // Year
-                //                 parseInt(dateComponents[1]) - 1,  // Month (subtract 1 since months are zero-based)
-                //                 parseInt(dateComponents[2])  // Day
-                //             );
-
-                //             return [date, item.oil_price];
-                //         } else {
-                //             // Handle the case where dateString is not defined or not a string
-                //             console.error('Invalid date string:', dateString);
-                //             return null; // Or handle the error in a way that makes sense for your application
-                //         }
-                //     });
-                // }
-
-
-                // originalData = parseData(originalData);
-                // predictionData = parseData(predictionData);
 
                 // 配置图表选项
                 var option = {
