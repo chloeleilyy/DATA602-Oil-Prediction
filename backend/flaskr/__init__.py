@@ -80,14 +80,6 @@ def create_app(test_config=None):
     # return all oil prices.
     @app.route("/all_oil_price", methods=['GET', 'POST', 'PUT', 'DELETE'])
     def all_oil_price():
-        # if request.method == 'GET':
-        #     query = "SELECT * FROM oil_price"
-        #     result = query_db(query)
-        #     if result is None:
-        #         return "No data in database."
-        #     response = json.dumps(result)
-        #     response.headers.add('Access-Control-Allow-Origin', '*')
-        #     return response
         if request.method == 'GET':
             query = "SELECT * FROM oil_price ORDER BY date ASC"
             result = query_db(query)

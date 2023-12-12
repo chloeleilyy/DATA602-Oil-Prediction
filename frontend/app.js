@@ -1,6 +1,6 @@
 var chart = echarts.init(document.getElementById('container'));
 
-fetch('http://127.0.0.1:5000/all_oil_price')
+fetch('http://flask-backend.eba-nurfnhwm.us-east-2.elasticbeanstalk.com/all_oil_price')
     .then(response => response.json())
     .then(data => {
         var originalData = [];
@@ -111,14 +111,11 @@ updateCurrentDate();
 setInterval(updateCurrentDate, 1000 * 60 * 60);
 
 // Send update request to backend.
-// 获取"Update"按钮元素
 var updateButton = document.getElementById('update-button');
 
-// 添加点击事件监听器
 updateButton.addEventListener('click', function () {
-    // 发送请求到后端
-    fetch('http://127.0.0.1:5000/update_price', {
-        method: 'POST', // 或 'POST'，根据您的后端路由方法选择
+    fetch('http://flask-backend.eba-nurfnhwm.us-east-2.elasticbeanstalk.com//update_price', {
+        method: 'POST',
     })
     .then(response => {
         if (response.status === 200) {
@@ -130,8 +127,7 @@ updateButton.addEventListener('click', function () {
         }
     })
     .then(data => {
-        // 处理响应，根据需要更新前端数据或界面
-            alert('Data updated successfully');
+            alert('Data updated successfully or no new data.');
             console.log('Data updated successfully');
             var originalData = [];
             var predictionData = [];
