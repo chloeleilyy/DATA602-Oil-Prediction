@@ -12,6 +12,12 @@ fetch('http://flask-backend.eba-nurfnhwm.us-east-2.elasticbeanstalk.com/all_oil_
             predictionData.push([date, item.prediction]);
         });
 
+        const totalPoints = originalData.length;
+        const pointsToShow = 90;
+
+        const startPercent = totalPoints > pointsToShow ? (totalPoints - pointsToShow) / totalPoints * 100 : 0;
+
+
         var option = {
             title: {
                 text: 'Original Price VS Predicted Price',
@@ -58,10 +64,10 @@ fetch('http://flask-backend.eba-nurfnhwm.us-east-2.elasticbeanstalk.com/all_oil_
             },
             dataZoom: [{
                 type: 'inside',
-                start: 0,
+                start: startPercent,
                 end: 100
             }, {
-                start: 0,
+                start: startPercent,
                 end: 100,
                 handleIcon: 'M10 0 L5 10 L0 0 L5 0 L5 10 Z',
                 handleSize: '80%',
