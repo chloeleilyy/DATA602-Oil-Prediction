@@ -120,7 +120,7 @@ setInterval(updateCurrentDate, 1000 * 60 * 60);
 var updateButton = document.getElementById('update-button');
 
 updateButton.addEventListener('click', function () {
-    fetch('http://flask-backend.eba-nurfnhwm.us-east-2.elasticbeanstalk.com//update_price', {
+    fetch('http://flask-backend.eba-nurfnhwm.us-east-2.elasticbeanstalk.com/update_price', {
         method: 'POST',
     })
     .then(response => {
