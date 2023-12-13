@@ -2,9 +2,8 @@ DROP TABLE IF EXISTS oil_price;
 
 CREATE TABLE oil_price (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  date DATE NOT NULL,
-  const FLOAT NOT NULL,
-  price FLOAT NOT NULL,
-  julian FLOAT NOT NULL
+  date TEXT NOT NULL,
+  oil_price FLOAT DEFAULT null,
+  prediction FLOAT DEFAULT null
 );
 
